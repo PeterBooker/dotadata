@@ -1,0 +1,97 @@
+{{define "docsPage"}}{{ template "header" . }}
+	
+		{{ template "menu" . }}
+
+		<main role="main">
+
+			<div class="row">
+				<div class="col-12 col-md-3 col-lg-2">
+					<nav class="sidebar bg-light">
+						<div id="side-menu" class="list-group list-group-flush">
+
+							<span class="title">General</span>
+							<a href="#getting-started" class="list-group-item list-group-item-action">Getting Started</a>
+							<a href="#manual" class="list-group-item list-group-item-action">Manual</a>
+							<a href="#wordpress" class="list-group-item list-group-item-action">WordPress</a>
+
+							<span class="title">API</span>
+							<a href="#abilities" class="list-group-item list-group-item-action">Abilities</a>
+							<a href="#ability" class="list-group-item list-group-item-action">Ability</a>
+							<a href="#heroes" class="list-group-item list-group-item-action">Heroes</a>
+							<a href="#hero" class="list-group-item list-group-item-action">Hero</a>
+							<a href="#items" class="list-group-item list-group-item-action">Items</a>
+							<a href="#item" class="list-group-item list-group-item-action">Item</a>
+
+						</div>
+					</nav>
+				</div>
+				<div class="col-12 col-md-9 col-lg-10">
+					<section class="docs-content" data-spy="scroll" data-target="#side-menu" data-offset="0">
+
+						<h2 id="general">Documentation</h2>
+						<p>This documentation gives you more information about the various options for using Dota 2 Data on your website.</p>
+
+						<hr class="featurette-divider">
+
+						<h3 id="getting-started">Getting Started</h3>
+						<p>Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+						<pre><code>&lt;p&gt;Sample text here...&lt;/p&gt;&lt;p&gt;And another line of sample text here...&lt;/p&gt;</code></pre>
+
+						<hr class="featurette-divider">
+
+						<h3 id="manual">Manual Use</h3>
+						<p>Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+						<pre><code>&lt;p&gt;Sample text here...&lt;/p&gt;&lt;p&gt;And another line of sample text here...&lt;/p&gt;</code></pre>
+
+						<hr class="featurette-divider">
+
+						<h3 id="wordpress">WordPress Plugin</h3>
+						<p>Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+						<pre><code>&lt;p&gt;Sample text here...&lt;/p&gt;&lt;p&gt;And another line of sample text here...&lt;/p&gt;</code></pre>
+
+						<hr class="featurette-divider">
+
+						<h2 id="api">API</h2>
+						<p>You can access data directly from the API, with the following endpoints. All endpoints have a single (optional) query parameter: <code>lang</code>, which allows you to define the language.</p>
+
+						<hr class="featurette-divider">
+
+						<h3 id="abilities">Abilities</h3>
+						<p>URL: <code>https://dota.peterbooker.com/api/v1/abilities/</code></p>
+
+						<hr class="featurette-divider">
+
+						<h3 id="ability">Ability</h3>
+						<p>URL: <code>https://dota.peterbooker.com/api/v1/ability/{name}/</code></p>
+
+						<hr class="featurette-divider">
+
+						<h3 id="heroes">Heroes</h3>
+						<p>URL: <code>https://dota.peterbooker.com/api/v1/heroes/</code></p>
+
+						<hr class="featurette-divider">
+
+						<h3 id="hero">Heroes</h3>
+						<p>URL: <code>https://dota.peterbooker.com/api/v1/hero/{name}/</code></p>
+
+						<hr class="featurette-divider">
+
+						<h3 id="items">Items</h3>
+						<p>URL: <code>https://dota.peterbooker.com/api/v1/items/</code></p>
+
+						<hr class="featurette-divider">
+
+						<h3 id="item">Item</h3>
+						<p>URL: <code>https://dota.peterbooker.com/api/v1/item/{name}/</code></p>
+
+						<hr class="featurette-divider">
+
+					</section>
+				</div>
+			</div>
+			
+		</main>
+		
+	{{ template "footer" . }}
+		
+{{end}}

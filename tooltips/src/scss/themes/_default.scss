@@ -1,0 +1,246 @@
+//
+// Default Theme
+//
+
+#ddTip {
+    .container.theme-default {
+        margin: 0;
+        padding: 0;
+        background-color: #10171c;
+        border: 2px solid #000;
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+        color: #ffffff;
+        max-width: 400px;
+
+        hr {
+            border: none;
+            border-top: 1px solid $gray-dark;
+            margin: 0.6em 0;
+        }
+
+        .hdr {
+            padding-bottom: 20px;
+            clear: both;
+            overflow: hidden;
+            padding: 10px 10px 10px 10px;
+            color: $blue-dark;
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
+
+            .portrait {
+                float: left;
+                margin-right: 20px;
+                border-top: 1px solid rgba(255, 255, 255, 0.30);
+                margin-bottom: 1em;
+
+                .img {
+                    max-width: 125px;
+                    height: auto;
+                    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 1);
+                }
+
+            }
+
+            .title {
+                color: #ffffff;
+                text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.75);
+                margin: 0 0 0 0;
+                font-size: 14px;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                line-height: 1.6em;
+                clear: none;
+
+                .lvl {
+                    float: right;
+                    text-transform: none;
+                    font-weight: normal;
+                }
+            }
+
+            .affects,
+            .attributes {
+                color: $blue-dark;
+                margin-bottom: 1.2em;
+            }
+
+            .attributes .attribVal {
+                color: $gray;
+            }
+
+            .desc {
+                color: $blue-light;
+                margin-bottom: 1.2em;
+                h1 {
+                    font-size: 14px;
+                    font-weight: normal;
+                    color: #ffffff;
+                    margin: 0 0 0.6em 0;
+                    text-align: left;
+                }
+            }
+
+            .notes {
+                color: #0b1215;
+                font-size: 12px;
+                text-shadow: none;
+                padding: 6px 8px;
+                background-color: $blue-dark;
+                margin-bottom: 1.2em;
+            }
+
+            .role {
+                margin: 0 0 14px 0;
+                clear: none;
+
+                .atk {
+                    color: #ffffff;
+                    margin-right: 8px;
+                }
+                .roles {
+                    color: $blue-light;
+                }
+            }
+
+            .usage {
+                color: $gray-light;
+                margin-top: 0.2em;
+                display: flex;
+                align-items: center;
+                clear: both;
+                .dd-icon {
+                    height: 11px;
+                    width: 11px;
+                    margin-right: 0.6em;
+                }
+                .cooldown {
+                    margin-right: 1.6em;
+                }
+            }
+
+            .meta {
+                color: $gold;
+                font-size: 14px;
+                font-weight: bold;
+                .dd-icon {
+                    width: 20px;
+                    height: auto;
+                    margin-right: 0.6em;
+                    line-height: 25px;
+                    vertical-align: middle;
+                }
+                .component-icon {
+                    width: auto;
+                    max-height: 20px;
+                    box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.75);
+                    float: right;
+                    margin-left: 0.6em;
+                }
+            }
+
+            .stats {
+                margin: 0 0 12px 0;
+                clear: none;
+
+                &:last-of-type {
+                    margin-bottom: 0px;
+                }
+
+                .stat-grp {
+                    display: inline-block;
+                    margin: 0 1em 0 0;
+                    width: 65px;
+
+                    &:last-of-type {
+                        margin-right: 0px;
+                    }
+
+                    .icon {
+                        height: 16px;
+                        width: auto;
+                        margin: 2px 5px 0 3px;
+                    }
+
+                    .icon.atk,
+                    .icon.ms {
+                        margin-top: 2px;
+                        margin-left: 0px;
+                    }
+
+                    .icon.arm {
+                        margin-top: 2px;
+                        margin-left: 2px;
+                    }
+
+                    .icon.primary {
+                        margin-top: 2px;
+                        border: 1px solid $primary-stat;
+                        border-radius: 16px;
+                    }
+
+                    .stat {
+                        color: #ffffff;
+                        vertical-align: top;
+                        float: right;
+                        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.75);
+                    }
+
+                }
+
+            }
+
+            .abilities {
+                clear: both;
+                .abi {
+                    clear: both;
+                    margin-bottom: 1em;
+                    overflow: hidden;
+                    .name {
+                        font-size: 14px;
+                        color: #ffffff;
+                    }
+                    .desc {
+                        font-size: 12px;
+                        color: $blue-light;
+                        margin-bottom: 0;
+                    }
+                    img {
+                        max-width: 70px;
+                        height: auto;
+                        float: left;
+                        box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 1);
+                        margin: 0.2em 1em 0.6em 0;
+                    }
+                    
+                }
+            }
+
+        }
+
+        &.item {
+            .desc {
+                clear: both;
+                h1 {
+                    margin: 1em 0 0.6em 0;
+                }
+            }
+        }
+
+        .ftr {
+            background-color: #182229;
+            padding: 10px 10px 10px 10px;
+
+            .bio {
+                padding: 10px;
+                background-color: #0b1215;
+                color: #3d4e5b;
+                font-size: 12.25px;
+                font-weight: 400;
+                font-style: italic;
+                line-height: 1.5em;
+            }
+
+        }
+
+    }
+}

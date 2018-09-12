@@ -1,0 +1,22 @@
+[Unit]
+Description=DotaData
+After=network-online.target
+Wants=network-online.target systemd-networkd-wait-online.service
+
+[Service]
+Type=simple
+User=www-data
+Group=www-data
+KillMode=mixed
+KillSignal=SIGQUIT
+TimeoutStopSec=5s
+ProtectHome=true
+
+ProtectSystem=full
+ReadWriteDirectories=/etc/dotadata
+
+WorkingDirectory=/etc/dotadata
+ExecStart=/usr/local/bin/dotadata
+
+[Install]
+WantedBy=multi-user.target
