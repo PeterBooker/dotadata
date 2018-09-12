@@ -1,5 +1,7 @@
 # DotaData
 
+**note: The project is still being finalised and the public website is mostly still placeholder data. It should all be finished by this weekend.**
+
 A group of projects which help you display translated Dota2 data on your website, beautifully. Add stunning tooltips to dota2.com, opendota.com, dotabuff.com and custom links. Or embed Dota2 data (Heroes, Abilities and Items) directly into webpages with the brilliant WordPress plugin. If that is not enough, use the API directly and create your own content.
 
 ## Demo
