@@ -167,7 +167,7 @@ module ddTips {
         if ( ! ( item in Store ) ) {
 
             let loadingContent: string = `
-                <div class="bdy">
+                <div class="container">
                     <div class="dd-lc">
                         <div class="dd-ldr">Loading...</div>
                     </div>
