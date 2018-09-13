@@ -6,7 +6,6 @@ const extractSass = new ExtractTextPlugin({
 });
 
 module.exports = {
-  mode: 'development',
   entry: [
       './tooltips/src/js/index.ts',
       './tooltips/src/scss/main.scss'

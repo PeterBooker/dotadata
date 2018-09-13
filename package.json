@@ -5,7 +5,8 @@
   "description": "Group of projects which allow the display of Dota2 data on websites.",
   "homepage": "https://dota.peterbooker.com",
   "scripts": {
-    "start": "webpack --config webpack.config.js",
+    "start": "webpack --config tooltips/config/webpack.dev.js",
+    "build": "webpack --config tooltips/config/webpack.prod.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Peter Booker <mail@peterbooker.com>",
@@ -18,6 +19,11 @@
   "devDependencies": {
     "css-loader": "^0.28.11",
     "extract-text-webpack-plugin": "^4.0.0-alpha.0",
+    "gulp": "^3.9.1",
+    "gulp-copy": "^1.1.0",
+    "gulp-csso": "^3.0.1",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.1",
     "node-sass": "^4.9.3",
     "sass-loader": "^6.0.7",
     "style-loader": "^0.19.1",
@@ -25,10 +31,7 @@
     "typescript": "^2.9.2",
     "webpack": "^4.17.2",
     "webpack-cli": "^3.1.0",
-    "gulp": "^3.9.1",
-    "gulp-copy": "^1.1.0",
-    "gulp-csso": "^3.0.1",
-    "gulp-rename": "^1.4.0",
-    "gulp-sass": "^4.0.1"
+    "webpack-dev-server": "^3.1.8",
+    "webpack-merge": "^4.1.4"
   }
 }
