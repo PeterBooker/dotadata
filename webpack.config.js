@@ -2,11 +2,11 @@ const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const extractSass = new ExtractTextPlugin({
-    filename: 'ddtip.css',
+    filename: 'ddtips.css',
 });
 
 module.exports = {
-  mode: 'production',
+  mode: 'development',
   entry: [
       './tooltips/src/js/index.ts',
       './tooltips/src/scss/main.scss'
@@ -41,7 +41,7 @@ module.exports = {
     extensions: [ '.tsx', '.ts', '.js' ]
   },
   output: {
-    filename: 'ddtip.js',
+    filename: 'ddtips.js',
     path: path.resolve(__dirname, 'tooltips/dist')
   }
 };

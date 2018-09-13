@@ -43,15 +43,14 @@ module ddTips {
     export function Init() {
 
         let cssID: string = 'ddtip-css'
-
         if ( !document.getElementById(cssID) ) {
             let head: HTMLHeadElement  = document.getElementsByTagName('head')[0]
             let link: HTMLLinkElement  = document.createElement('link')
             link.id   = cssID
             link.rel  = 'stylesheet'
             link.type = 'text/css'
-            link.href = 'dist/ddtip.css'
-            //link.href = 'https://dota.peterbooker.com/assets/latest/ddtip.css'
+            link.href = 'dist/ddtips.css'
+            //link.href = 'https://dota.peterbooker.com/assets/latest/ddtips.css'
             link.media = 'all'
             head.appendChild(link)
         }
@@ -74,11 +73,12 @@ module ddTips {
                 var parser = document.createElement('a')
                 parser.href = href
 
+                // Check if contains a supported domain
                 let idx: number = SupportedDomains.indexOf(parser.hostname)
-                let manual: boolean = false
 
+                // Check if required data attributes were set manually
+                let manual: boolean = false
                 if ( a.dataset.type != null && a.dataset.item != null ) {
-                    console.log('Found a manual link')
                     manual = true
                 }
 
@@ -89,29 +89,39 @@ module ddTips {
                         case 'dota2.com':
                         case 'www.dota2.com':
                             split = cleanPath(parser.pathname).split('/')
-                            if ( split[0] === 'hero' || split[0] === 'item' ) {
+                            if ( split.length > 1 && split[0] === 'hero' || split[0] === 'item' ) {
                                 a.setAttribute( 'data-type', split[0] )
                                 a.setAttribute( 'data-item', split[1] )
+                            } else {
+                                continue
                             }
                             break
                         case 'opendota.com':
                         case 'www.opendota.com':
                             split = cleanPath(parser.pathname).split('/')
-                            if ( split[0] === 'heroes' ) {
+                            if ( split.length > 1 && split[0] === 'heroes' ) {
                                 a.setAttribute( 'data-type', 'hero' )
                                 a.setAttribute( 'data-item', split[1] )
+                            } else {
+                                continue
                             }
                             break
                         case 'dotabuff.com':
                         case 'www.dotabuff.com':
+                            let valid: boolean = false
                             split = cleanPath(parser.pathname).split('/')
-                            if ( split[0] === 'heroes' ) {
+                            if ( split.length > 1 && split[0] === 'heroes' ) {
+                                valid = true
                                 a.setAttribute( 'data-type', 'hero' )
                                 a.setAttribute( 'data-item', split[1].replace('-', '_') )
                             }
-                            if ( split[0] === 'items' ) {
+                            if ( split.length > 1 && split[0] === 'items' ) {
+                                valid = true
                                 a.setAttribute( 'data-type', 'item' )
                                 a.setAttribute( 'data-item', split[1].replace('-', '_') )
+                            }
+                            if ( !valid ) {
+                                continue
                             }
                             break
                     }
@@ -165,11 +175,11 @@ module ddTips {
 
         // If not already stored, fetch data
         if ( ! ( item in Store ) ) {
-
+            let bodyClasses: string[] = ['container', 'theme-' + Config.Theme]
             let loadingContent: string = `
-                <div class="container">
-                    <div class="dd-lc">
-                        <div class="dd-ldr">Loading...</div>
+                <div class="${bodyClasses.join(' ')}">
+                    <div class="loading">
+                        <div class="loader">Loading...</div>
                     </div>
                 </div>
             `
