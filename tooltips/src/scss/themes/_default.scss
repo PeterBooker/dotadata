@@ -242,5 +242,100 @@
 
         }
 
+        .arw {
+            display: block;
+            position: relative;
+            background: #10171c;
+        }
+        .arw:after, .arw:before {
+            bottom: -2px;
+            left: 50%;
+            border: solid transparent;
+            content: " ";
+            height: 0;
+            width: 0;
+            position: absolute;
+            pointer-events: none;
+        }
+        
+        .arw:after {
+            border-color: rgba(136, 183, 213, 0);
+            border-bottom-color: #10171c;
+            border-width: 10px;
+            margin-left: -10px;
+        }
+        .arw:before {
+            border-color: rgba(194, 225, 245, 0);
+            border-bottom-color: #000;
+            border-width: 12px;
+            margin-left: -12px;
+        }
+
+        .loading {
+            display: block;
+            width: 40px;
+            height: 40px;
+            overflow: hidden;
+        }
+        .loader,
+        .loader:before,
+        .loader:after {
+          background: #ffffff;
+          -webkit-animation: load1 1s infinite ease-in-out;
+          animation: load1 1s infinite ease-in-out;
+          width: 1em;
+          height: 4em;
+        }
+        .loader {
+          color: #ffffff;
+          text-indent: -9999em;
+          margin: 14px auto;
+          position: relative;
+          font-size: 4px;
+          -webkit-transform: translateZ(0);
+          -ms-transform: translateZ(0);
+          transform: translateZ(0);
+          -webkit-animation-delay: -0.16s;
+          animation-delay: -0.16s;
+        }
+        .loader:before,
+        .loader:after {
+          position: absolute;
+          top: 0;
+          content: '';
+        }
+        .loader:before {
+          left: -1.5em;
+          -webkit-animation-delay: -0.32s;
+          animation-delay: -0.32s;
+        }
+        .loader:after {
+          left: 1.5em;
+        }
+        @-webkit-keyframes load1 {
+          0%,
+          80%,
+          100% {
+            box-shadow: 0 0;
+            height: 4em;
+          }
+          40% {
+            box-shadow: 0 -2em;
+            height: 5em;
+          }
+        }
+        @keyframes load1 {
+          0%,
+          80%,
+          100% {
+            box-shadow: 0 0;
+            height: 4em;
+          }
+          40% {
+            box-shadow: 0 -2em;
+            height: 5em;
+          }
+        }
+
     }
 }
