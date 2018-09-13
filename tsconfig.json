@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "outDir": "./dist/",
+        "outDir": "./tooltips/dist/",
         "noImplicitAny": true,
         "noImplicitUseStrict": true,
         "module": "es6",
@@ -9,9 +9,9 @@
         "allowJs": true
     },
     "include": [
-        "./src/js/*"
+        "./tooltips/src/js/*"
     ],
     "exclude": [
-		"/node_modules/**"
+		"*/node_modules/**"
 	]
 }

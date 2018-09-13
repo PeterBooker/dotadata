@@ -8,8 +8,8 @@ const extractSass = new ExtractTextPlugin({
 module.exports = {
   mode: 'production',
   entry: [
-      './src/js/index.ts',
-      './src/scss/main.scss'
+      './tooltips/src/js/index.ts',
+      './tooltips/src/scss/main.scss'
   ],
   module: {
     rules: [
@@ -21,7 +21,7 @@ module.exports = {
       {
         test: /\.scss$/,
         include: [
-            path.resolve(__dirname, 'src/scss')
+            path.resolve(__dirname, 'tooltips/src/scss')
         ],
         use: extractSass.extract({
             use: [{
@@ -42,6 +42,6 @@ module.exports = {
   },
   output: {
     filename: 'ddtip.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'tooltips/dist')
   }
 };
