@@ -20,7 +20,7 @@ module.exports = {
       {
         test: /\.scss$/,
         include: [
-            path.resolve(__dirname, 'tooltips/src/scss')
+            path.resolve(__dirname, '../src/scss')
         ],
         use: extractSass.extract({
             use: [{
@@ -41,6 +41,6 @@ module.exports = {
   },
   output: {
     filename: 'ddtips.js',
-    path: path.resolve(__dirname, 'tooltips/dist')
+    path: path.resolve(__dirname, '../dist')
   }
 };

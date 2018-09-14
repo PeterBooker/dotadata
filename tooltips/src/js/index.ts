@@ -2,8 +2,10 @@ import { DataTypes } from './types/data'
 import { ImageURLs, APIURLs } from './constants/urls'
 
 declare global {
-    interface Window { ddConfig: any; }
+    interface Window { ddConfig: any }
 }
+
+declare const process: any
 
 /**
  * ddTips contains all the Tooltips functionality.
@@ -49,9 +51,15 @@ module ddTips {
             link.id   = cssID
             link.rel  = 'stylesheet'
             link.type = 'text/css'
-            link.href = 'dist/ddtips.css'
-            //link.href = 'https://dota.peterbooker.com/assets/latest/ddtips.css'
             link.media = 'all'
+            if ( process.env.NODE_ENV === 'production' ) {
+                console.log('ENV: Production')
+                link.href = 'https://dota.peterbooker.com/assets/latest/ddtips.css' 
+            } else {
+                console.log('ENV: Development')
+                link.href = 'dev/ddtips.css'
+            }
+            
             head.appendChild(link)
         }
         

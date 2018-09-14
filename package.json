@@ -5,7 +5,7 @@
   "description": "Group of projects which allow the display of Dota2 data on websites.",
   "homepage": "https://dota.peterbooker.com",
   "scripts": {
-    "start": "webpack --config tooltips/config/webpack.dev.js",
+    "start": "webpack-dev-server --watch --open --config tooltips/config/webpack.dev.js",
     "build": "webpack --config tooltips/config/webpack.prod.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
