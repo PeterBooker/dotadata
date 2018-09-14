@@ -53,10 +53,8 @@ module ddTips {
             link.type = 'text/css'
             link.media = 'all'
             if ( process.env.NODE_ENV === 'production' ) {
-                console.log('ENV: Production')
                 link.href = 'https://dota.peterbooker.com/assets/latest/ddtips.css' 
             } else {
-                console.log('ENV: Development')
                 link.href = 'dev/ddtips.css'
             }
             
