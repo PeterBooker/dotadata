@@ -169,6 +169,7 @@ module ddTips {
         if ( !el ) {
             el = document.createElement('div')
             el.id = 'ddTip'
+            el.className = 'theme-' + Config.Theme
             document.body.appendChild(el)
         }
         
@@ -181,9 +182,8 @@ module ddTips {
 
         // If not already stored, fetch data
         if ( ! ( item in Store ) ) {
-            let bodyClasses: string[] = ['container', 'theme-' + Config.Theme]
             let loadingContent: string = `
-                <div class="${bodyClasses.join(' ')}">
+                <div class="container">
                     <div class="loading">
                         <div class="loader">Loading...</div>
                     </div>
@@ -252,7 +252,7 @@ module ddTips {
             }
         }
 
-        el.className = 'active'
+        el.classList.add('active')
         positionTip(el, link)
     }
     
@@ -274,7 +274,7 @@ module ddTips {
             el.removeEventListener('mouseleave', mouseOut)
 
             if ( el ) {
-                el.className = ''
+                el.classList.remove('active')
                 el.innerHTML = ''
                 el.innerText = ''
             }
@@ -348,15 +348,15 @@ module ddTips {
          * @return {HTMLElement}
          */
         buildTip(el: HTMLElement) {
-            let bodyClasses: string[] = ['container', 'theme-' + this.theme, 'hero', this.getClass()]
+            let bodyClasses: string[] = ['container', 'hero', this.getClass()]
             let abilities: string = ''
             for ( let ability of this.data.abilities ) {
                 abilities += `<div class="abi ability-${ability.name}"><img src="${ability.img_url}" title="${ability.title}" /><div class="name">${ability.title}</div><div class="desc">${ability.desc}</div></div>`
             }
 
             let tipContent: string = `
-            <div class="arw"></div>
             <div class="${bodyClasses.join(' ')}">
+                <div class="arw"></div>
                 <div class="hdr">
                     <span class="portrait">
                         <img class="img" src="${this.data.img_url}" alt="${this.data.title} Portrait - Dota 2 Hero" title="${this.data.title}" />
@@ -444,7 +444,7 @@ module ddTips {
          * @return {HTMLElement}
          */
         buildTip(el: HTMLElement) {
-            let bodyClasses: string[] = ['container', 'theme-' + this.theme, 'ability', this.getClass()]
+            let bodyClasses: string[] = ['container', 'ability', this.getClass()]
             let cd, mc, usage: string
             if ( this.data.cd != null ) {
                 cd = `<span class="cooldown"><img class="dd-icon" src="${ImageURLs.cooldownIcon}" title="Cooldown Icon" />${this.data.cd.join(' / ')}</span>`
@@ -527,7 +527,7 @@ module ddTips {
          * @return {HTMLElement}
          */
         buildTip(el: HTMLElement) {
-            let bodyClasses: string[] = ['container', 'theme-' + this.theme, 'item', this.getClass()]
+            let bodyClasses: string[] = ['container', 'item', this.getClass()]
             let cd, mc, usage: string
             if ( this.data.cd != null ) {
                 cd = `<span class="cooldown"><img class="dd-icon" src="${ImageURLs.cooldownIcon}" title="Cooldown Icon" />${this.data.cd.join(' / ')}</span>`
