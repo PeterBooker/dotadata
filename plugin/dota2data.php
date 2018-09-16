@@ -2,18 +2,19 @@
 /**
  * Plugin Name: DotaData
  * Plugin URI: https://github.com/PeterBooker/dotadata/
- * Description: Displays Dota 2 Data.
+ * Description: Easily display Dota2 data on your website.
  * Version: 0.1.0
  * Author: Peter Booker
+ * Author URI: https://www.peterbooker.com
  *
  * @package dotadata
  */
 
 // Useful global constants.
-define( 'DD_VERSION', '0.7.0' );
-define( 'DD_URL', plugin_dir_url( __FILE__ ) );
-define( 'DD_PATH', plugin_dir_path( __FILE__ ) );
-define( 'DD_FILE', plugin_basename( __FILE__ ) );
+define( 'DOTADATA_VERSION', '0.7.0' );
+define( 'DOTADATA_URL', plugin_dir_url( __FILE__ ) );
+define( 'DOTADATA_PATH', plugin_dir_path( __FILE__ ) );
+define( 'DOTADATA_FILE', plugin_basename( __FILE__ ) );
 
 dd_pre_init();
 
@@ -37,7 +38,7 @@ function dd_pre_init() {
 	/**
 	 * Load plugin initialisation file.
 	 */
-	require plugin_dir_path( __FILE__ ) . '/includes/dotadata.php';
+	require plugin_dir_path( __FILE__ ) . '/init.php';
 
 }
 
