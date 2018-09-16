@@ -22,7 +22,7 @@ gulp.task('copydeps', function () {
     return gulp.src([
         'node_modules/jquery/dist/jquery.slim.min.js',
         'node_modules/bootstrap/dist/js/bootstrap.bundle.min.js',
-        'assets/css/main.min.css'
+        'web/assets/css/main.min.css'
         ])
         .pipe(gulp.dest('build/assets/'));
 });
