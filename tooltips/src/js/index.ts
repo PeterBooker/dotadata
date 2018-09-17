@@ -1,5 +1,6 @@
 import { DataTypes } from './types/data'
 import { ImageURLs, APIURLs } from './constants/urls'
+import { HTTP } from './components/http'
 
 declare global {
     interface Window { ddConfig: any }
@@ -190,38 +191,49 @@ module ddTips {
                 </div>
             `
             el.innerHTML = loadingContent
-        
-            getCORS(APIURLs.Base + '' + type + '/' + item + '?lang=' + lang, function(request: any) {
-                    
-                let response: string = request.currentTarget.response || request.target.responseText
-                let data: DataTypes.Ability | DataTypes.Hero | DataTypes.Item | DataTypes.Unit
-                data = JSON.parse(response)
-                Store[item] = data
 
-                switch( type ) {
-                    case 'ability': {
-                        let Tip: AbilityTooltip = new AbilityTooltip(<DataTypes.Ability>data, theme)
-                        el = Tip.buildTip(el)
-                        break
+            let URL: string = APIURLs.Base + '' + type + '/' + item + '?lang=' + lang
+
+            HTTP.Get( URL, function() {
+
+                if ( this.readyState === 4 && this.status >= 200 && this.status < 300 ) {
+                    // Success
+                    let data: DataTypes.Ability | DataTypes.Hero | DataTypes.Item | DataTypes.Unit
+                    data = this.response
+                    Store[item] = data
+
+                    switch( type ) {
+                        case 'ability': {
+                            let Tip: AbilityTooltip = new AbilityTooltip(<DataTypes.Ability>data, theme)
+                            el = Tip.buildTip(el)
+                            break
+                        }
+                        case 'hero': {
+                            let Tip: HeroTooltip = new HeroTooltip(<DataTypes.Hero>data, theme)
+                            el = Tip.buildTip(el)
+                            break
+                        }
+                        case 'item': {
+                            let Tip: ItemTooltip = new ItemTooltip(<DataTypes.Item>data, theme)
+                            el = Tip.buildTip(el)
+                            break
+                        }
+                        case 'unit': {
+                            let Tip: UnitTooltip = new UnitTooltip(<DataTypes.Unit>data, theme)
+                            el = Tip.buildTip(el)
+                            break
+                        }
                     }
-                    case 'hero': {
-                        let Tip: HeroTooltip = new HeroTooltip(<DataTypes.Hero>data, theme)
-                        el = Tip.buildTip(el)
-                        break
-                    }
-                    case 'item': {
-                        let Tip: ItemTooltip = new ItemTooltip(<DataTypes.Item>data, theme)
-                        el = Tip.buildTip(el)
-                        break
-                    }
-                    case 'unit': {
-                        let Tip: UnitTooltip = new UnitTooltip(<DataTypes.Unit>data, theme)
-                        el = Tip.buildTip(el)
-                        break
-                    }
+    
+                    positionTip(el, link)
+
+                } else {
+                    // Error
+                    el.classList.remove('active')
+                    el.innerHTML = ''
+                    el.innerText = ''
+                    console.error('Failed to fetch API data, no Tooltip displayed.')
                 }
-
-                positionTip(el, link)
             })
         
         } else {
@@ -702,16 +714,6 @@ module ddTips {
         el.style.left = left + 'px'
         el.style.top = top + 'px'
 
-    }
-
-    // HTTP GET Request
-    function getCORS(url: any, success: any) {
-        var xhr = new XMLHttpRequest()
-        xhr.open('GET', encodeURI(url))
-        xhr.onload = success
-        xhr.send()
-
-        return xhr
     }
 
     /**
