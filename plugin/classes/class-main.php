@@ -35,7 +35,8 @@ class Main {
 	 */
 	public function init() {
 		add_action( 'wp_loaded', array( $this, 'load_i18n' ) );
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_files' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue' ) );
+		add_action( 'plugins_loaded', array( $this, 'tooltips' ) );
 		add_action( 'plugins_loaded', array( $this, 'shortcode' ) );
 
 		// Register Block if Gutenberg is available.
@@ -72,15 +73,23 @@ class Main {
 	 *
 	 * @return void
 	 */
-	public function enqueues() {
-		wp_enqueue_style( 'dd-sheet', DOTADATA_URL . '/assets/css/ddsheet.min.css', array(), DOTADATA_VERSION );
-		wp_enqueue_script( 'dd-tooltips', DOTADATA_URL . '/assets/js/ddtips.min.js', array(), DOTADATA_VERSION, true );
-		wp_localize_script( 'dd-tooltips', 'ddConfig', array(
-			'Lang'          => 'en', // TODO: Integrate with i18n plugins.
-			'Theme'         => 'default',
-			'ShowLore'      => true,
-			'IncludeStyles' => true,
-		) );
+	public function enqueue() {
+		if ( is_singular() ) {
+			wp_enqueue_style( 'dd-sheet', DOTADATA_URL . '/assets/css/ddsheet.min.css', array(), DOTADATA_VERSION );
+		}
+	}
+
+	/**
+	 * Register Tooltips.
+	 *
+	 * Registers the Tooltips for the plugin.
+	 *
+	 * @uses \DotaData\Tooltips()
+	 *
+	 * @return void
+	 */
+	public function tooltips() {
+		new \DotaData\Tooltips();
 	}
 
 	/**
