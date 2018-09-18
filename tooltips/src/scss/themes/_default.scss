@@ -2,15 +2,17 @@
 // Default Theme
 //
 
-#ddTip.theme-default {
+#dotadata-tooltip.theme-default {
     max-width: 400px;
-    .container {
+    width: auto;
+    .dotadata-tooltip-container {
         margin: 0;
         padding: 0;
         background-color: #10171c;
         border: 2px solid #000;
         box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
         color: #ffffff;
+        width: auto;
 
         hr {
             border: none;
@@ -18,127 +20,108 @@
             margin: 0.6em 0;
         }
 
-        .hdr {
-            padding-bottom: 20px;
+        .dotadata-tooltip-header,
+        .dotadata-tooltip-body,
+        .dotadata-tooltip-footer {
+            padding: 12px;
+        }
+
+        .dotadata-tooltip-header {
             clear: both;
             overflow: hidden;
-            padding: 10px 10px 10px 10px;
             color: $blue-dark;
-            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
 
-            .portrait {
+            .dotadata-tooltip-image-container {
                 float: left;
-                margin-right: 20px;
+                margin: 0 20px 0 0;
                 border-top: 1px solid rgba(255, 255, 255, 0.30);
-                margin-bottom: 1em;
 
-                .img {
+                .dotadata-tooltip-image {
                     max-width: 125px;
                     height: auto;
                     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 1);
                 }
-
             }
 
-            .title {
+            .dotadata-tooltip-title {
                 color: #ffffff;
                 text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.75);
-                margin: 0 0 0 0;
+                margin: 0 0 0.6em 0;
                 font-size: 14px;
                 font-weight: 700;
                 text-transform: uppercase;
                 letter-spacing: 2px;
-                line-height: 1.6em;
+                line-height: 1em;
                 clear: none;
 
-                .lvl {
+                .dotadata-tooltip-level {
                     float: right;
                     text-transform: none;
                     font-weight: normal;
+                    letter-spacing: 0;
+                    text-shadow: none;
                 }
             }
 
-            .affects,
-            .attributes {
+            .dotadata-tooltip-affects,
+            .dotadata-tooltip-attributes {
                 color: $blue-dark;
                 margin-bottom: 1.2em;
             }
 
-            .attributes .attribVal {
+            .dotadata-tooltip-attributes .attribVal {
                 color: $gray;
             }
 
-            .desc {
-                color: $blue-light;
-                margin-bottom: 1.2em;
-                h1 {
-                    font-size: 14px;
-                    font-weight: normal;
-                    color: #ffffff;
-                    margin: 0 0 0.6em 0;
-                    text-align: left;
-                }
-            }
-
-            .notes {
-                color: #0b1215;
-                font-size: 12px;
-                text-shadow: none;
-                padding: 6px 8px;
-                background-color: $blue-dark;
-                margin-bottom: 1.2em;
-            }
-
-            .role {
+            .dotadata-tooltip-role {
                 margin: 0 0 14px 0;
                 clear: none;
 
-                .atk {
+                .dotadata-tooltip-attack {
                     color: #ffffff;
                     margin-right: 8px;
                 }
-                .roles {
+                .dotadata-tooltip-roles {
                     color: $blue-light;
                 }
             }
 
-            .usage {
-                color: $gray-light;
-                margin-top: 0.2em;
-                display: flex;
-                align-items: center;
-                clear: both;
-                .dd-icon {
-                    height: 11px;
-                    width: 11px;
-                    margin-right: 0.6em;
-                }
-                .cooldown {
-                    margin-right: 1.6em;
-                }
-            }
-
-            .meta {
+            .dotadata-tooltip-meta {
                 color: $gold;
-                font-size: 14px;
-                font-weight: bold;
-                .dd-icon {
-                    width: 20px;
-                    height: auto;
-                    margin-right: 0.6em;
-                    line-height: 25px;
-                    vertical-align: middle;
-                }
-                .component-icon {
+                overflow: hidden;
+                .dotadata-tooltip-cost {
                     width: auto;
-                    max-height: 20px;
-                    box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.75);
+                    float: left;
+                    font-size: 14px;
+                    font-weight: bold;
+                    .icon {
+                        width: 20px;
+                        height: auto;
+                        margin-right: 0.6em;
+                        line-height: 25px;
+                        vertical-align: middle;
+                    }
+                }
+                .dotadata-tooltip-components {
                     float: right;
-                    margin-left: 0.6em;
+                    padding-top: 5px;
+                    .dotadata-tooltip-component {
+                        width: 35px;
+                        margin-left: 0.6em;
+                        text-align: center;
+                        font-size: 12px;
+                        float: left;
+                        .icon {
+                            height: auto;
+                            width: auto;
+                            box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.75);
+                            margin-bottom: 2px;
+                        }
+                    }
                 }
             }
 
-            .stats {
+            .dotadata-tooltip-stats {
                 margin: 0 0 12px 0;
                 clear: none;
 
@@ -146,42 +129,39 @@
                     margin-bottom: 0px;
                 }
 
-                .stat-grp {
+                .group {
                     display: inline-block;
-                    margin: 0 1em 0 0;
+                    margin: 0 12px 0 0;
                     width: 65px;
+                    vertical-align: center;
+                    line-height: 1.6;
+                    text-align: right;
 
                     &:last-of-type {
                         margin-right: 0px;
                     }
 
                     .icon {
-                        height: 16px;
+                        height: 20px;
                         width: auto;
-                        margin: 2px 5px 0 3px;
+                        float: left;
                     }
 
-                    .icon.atk,
-                    .icon.ms {
+                    .icon.attack,
+                    .icon.movespeed {
                         margin-top: 2px;
-                        margin-left: 0px;
-                    }
-
-                    .icon.arm {
-                        margin-top: 2px;
-                        margin-left: 2px;
+                        margin-left: -4px;
                     }
 
                     .icon.primary {
-                        margin-top: 2px;
                         border: 1px solid $primary-stat;
                         border-radius: 16px;
                     }
 
                     .stat {
                         color: #ffffff;
-                        vertical-align: top;
-                        float: right;
+                        vertical-align: center;
+                        height: 20px;
                         text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.75);
                     }
 
@@ -189,17 +169,21 @@
 
             }
 
-            .abilities {
+        }
+
+        .dotadata-tooltip-body {
+
+            .dotadata-tooltip-abilities {
                 clear: both;
-                .abi {
+                .dotadata-tooltip-ability {
                     clear: both;
                     margin-bottom: 1em;
                     overflow: hidden;
-                    .name {
+                    .dotadata-tooltip-name {
                         font-size: 14px;
                         color: #ffffff;
                     }
-                    .desc {
+                    .dotadata-tooltip-description {
                         font-size: 12px;
                         color: $blue-light;
                         margin-bottom: 0;
@@ -215,22 +199,47 @@
                 }
             }
 
-        }
-
-        &.item {
-            .desc {
-                clear: both;
+            .dotadata-tooltip-description {
+                color: $blue-light;
+                margin-bottom: 1.2em;
                 h1 {
-                    margin: 1em 0 0.6em 0;
+                    font-size: 14px;
+                    font-weight: normal;
+                    color: #ffffff;
+                    margin: 0 0 0.6em 0;
+                    text-align: left;
+                }
+            }
+
+            .dotadata-tooltip-notes {
+                color: #0b1215;
+                font-size: 12px;
+                text-shadow: none;
+                padding: 6px 8px;
+                background-color: $blue-dark;
+                margin-bottom: 1.2em;
+            }
+
+            .dotadata-tooltip-usage {
+                color: $gray-light;
+                .icon {
+                    height: 16px;
+                    width: 16px;
+                    margin-right: 0.6em;
+                }
+                .dotadata-tooltip-cooldown {
+                    margin-right: 1.6em;
+                }
+                .dotadata-tooltip-active {
+                    color: #fff;
                 }
             }
         }
 
-        .ftr {
+        .dotadata-tooltip-footer {
             background-color: #182229;
-            padding: 10px 10px 10px 10px;
 
-            .bio {
+            .dotadata-tooltip-biography {
                 padding: 10px;
                 background-color: #0b1215;
                 color: #3d4e5b;
@@ -242,14 +251,28 @@
 
         }
 
+        &.dotadata-tooltip-ability .dotadata-tooltip-header,
+        &.dotadata-tooltip-item .dotadata-tooltip-header {
+            .dotadata-tooltip-image-container {
+                .dotadata-tooltip-image {
+                    max-width: 85px;
+                }
+            }
+        }
+
+        &.dotadata-tooltip-item .dotadata-tooltip-header {
+            .dotadata-tooltip-title {
+                margin-bottom: 0;
+            }
+        }
     }
 
-    .arw {
+    .dotadata-tooltip-arrow {
         display: block;
         position: relative;
         background: #10171c;
     }
-    .arw:after, .arw:before {
+    .dotadata-tooltip-arrow:after, .dotadata-tooltip-arrow:before {
         bottom: -2px;
         left: 50%;
         border: solid transparent;
@@ -260,35 +283,35 @@
         pointer-events: none;
     }
     
-    .arw:after {
+    .dotadata-tooltip-arrow:after {
         border-color: rgba(136, 183, 213, 0);
         border-bottom-color: #10171c;
         border-width: 10px;
         margin-left: -10px;
     }
-    .arw:before {
+    .dotadata-tooltip-arrow:before {
         border-color: rgba(194, 225, 245, 0);
         border-bottom-color: #000;
         border-width: 12px;
         margin-left: -12px;
     }
 
-    .loading {
+    .dotadata-tooltip-loading {
         display: block;
         width: 40px;
         height: 40px;
         overflow: hidden;
     }
-    .loader,
-    .loader:before,
-    .loader:after {
+    .dotadata-tooltip-loader,
+    .dotadata-tooltip-loader:before,
+    .dotadata-tooltip-loader:after {
         background: #ffffff;
         -webkit-animation: load1 1s infinite ease-in-out;
         animation: load1 1s infinite ease-in-out;
         width: 1em;
         height: 4em;
     }
-    .loader {
+    .dotadata-tooltip-loader {
         color: #ffffff;
         text-indent: -9999em;
         margin: 14px auto;
@@ -300,18 +323,18 @@
         -webkit-animation-delay: -0.16s;
         animation-delay: -0.16s;
     }
-    .loader:before,
-    .loader:after {
+    .dotadata-tooltip-loader:before,
+    .dotadata-tooltip-loader:after {
         position: absolute;
         top: 0;
         content: '';
     }
-    .loader:before {
+    .dotadata-tooltip-loader:before {
         left: -1.5em;
         -webkit-animation-delay: -0.32s;
         animation-delay: -0.32s;
     }
-    .loader:after {
+    .dotadata-tooltip-loader:after {
         left: 1.5em;
     }
     @-webkit-keyframes load1 {

@@ -4,7 +4,7 @@
 
 @import 'colors';
 
-#ddTip {
+#dotadata-tooltip {
     position: absolute;
     visibility: none;
     font-family: Arial, sans-serif;
@@ -25,19 +25,22 @@
 
     // Reset
     & * {
+        box-sizing: border-box;
         margin: 0;
         padding: 0;
         font-size: 14px;
         font-weight: normal;
         border: none;
         background: none;
+        float: none;
+        clear: none;
     }
 
     .loading {
         display: none;
     }
 
-    .arw {
+    .arrow {
         display: none;
     }
 }
