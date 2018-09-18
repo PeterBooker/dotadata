@@ -81,6 +81,7 @@ export module DataTypes {
     export interface ItemComponent {
         name: string
         title: string
+        cost: number
         img_url: string
     }
 

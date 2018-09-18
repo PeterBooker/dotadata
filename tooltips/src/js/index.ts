@@ -145,31 +145,31 @@ module ddTips {
     }
 
     /**
-     * touchStart() runs when a relevant link is touched, if the #ddTip element does not exist it is created.
+     * touchStart() runs when a relevant link is touched, if the #dotadata-tooltip element does not exist it is created.
      * The anchor URL is parsed to identify the type of Tooltip and an API request made for the data, this is
      * then used to build the tooltip content.
      * 
      * @param {TouchEvent} event 
      */
     function touchStart(event: TouchEvent) {
-        let el = document.getElementById('ddTip')
+        let el = document.getElementById('dotadata-tooltip')
     }
 
     /**
-     * mouseIn() runs when the mouse enters a relevant link, if the #ddTip element does not exist it is created.
+     * mouseIn() runs when the mouse enters a relevant link, if the #dotadata-tooltip element does not exist it is created.
      * The anchor URL is parsed to identify the type of Tooltip and an API request made for the data, this is
      * then used to build the tooltip content.
      * 
      * @param {MouseEvent} event 
      */
     function mouseIn(event: MouseEvent) {
-        let el = document.getElementById('ddTip')
+        let el = document.getElementById('dotadata-tooltip')
 
         let link = <HTMLAnchorElement>event.target
                 
         if ( !el ) {
             el = document.createElement('div')
-            el.id = 'ddTip'
+            el.id = 'dotadata-tooltip'
             el.className = 'theme-' + Config.Theme
             document.body.appendChild(el)
         }
@@ -184,9 +184,9 @@ module ddTips {
         // If not already stored, fetch data
         if ( ! ( item in Store ) ) {
             let loadingContent: string = `
-                <div class="container">
-                    <div class="loading">
-                        <div class="loader">Loading...</div>
+                <div class="dotadata-tooltip-container">
+                    <div class="dotadata-tooltip-loading">
+                        <div class="dotadata-tooltip-loader">Loading...</div>
                     </div>
                 </div>
             `
@@ -270,12 +270,12 @@ module ddTips {
     
     /**
      * mouseOut() runs when the mouse leaves a relevant link.
-     * If the #ddTip element exists, it is emptied and made invisible.
+     * If the #dotadata-tooltip element exists, it is emptied and made invisible.
      * 
      * @param {Event} event 
      */
     function mouseOut(event: MouseEvent) {
-        let el = document.getElementById('ddTip')
+        let el = document.getElementById('dotadata-tooltip')
 
         if ( isMouseOverTooltip(event, el) ) {
 
@@ -296,7 +296,7 @@ module ddTips {
 
     /**
      * Tooltip contains the shared structure of all Tooltips.
-     * TODO: Store reference to #ddTip element in all Tooltip classes.
+     * TODO: Store reference to #dotadata-tooltip element in all Tooltip classes.
      */
     class Tooltip {
         element: HTMLElement
@@ -360,56 +360,58 @@ module ddTips {
          * @return {HTMLElement}
          */
         buildTip(el: HTMLElement) {
-            let bodyClasses: string[] = ['container', 'hero', this.getClass()]
+            let bodyClasses: string[] = ['dotadata-tooltip-container', 'dotadata-tooltip-hero', this.getClass()]
             let abilities: string = ''
             for ( let ability of this.data.abilities ) {
-                abilities += `<div class="abi ability-${ability.name}"><img src="${ability.img_url}" title="${ability.title}" /><div class="name">${ability.title}</div><div class="desc">${ability.desc}</div></div>`
+                abilities += `<div class="dotadata-tooltip-ability ability-${ability.name}"><img src="${ability.img_url}" title="${ability.title}" /><div class="dotadata-tooltip-name">${ability.title}</div><div class="dotadata-tooltip-description">${ability.desc}</div></div>`
             }
 
             let tipContent: string = `
             <div class="${bodyClasses.join(' ')}">
-                <div class="arw"></div>
-                <div class="hdr">
-                    <span class="portrait">
-                        <img class="img" src="${this.data.img_url}" alt="${this.data.title} Portrait - Dota 2 Hero" title="${this.data.title}" />
+                <div class="dotadata-tooltip-arrow"></div>
+                <div class="dotadata-tooltip-header">
+                    <span class="dotadata-tooltip-image-container">
+                        <img class="dotadata-tooltip-image" src="${this.data.img_url}" alt="${this.data.title} Portrait - Dota 2 Hero" title="${this.data.title}" />
                     </span>
-                    <h2 class="title">${this.data.title}</h2>
-                    <div class="role">
-                        <span class="atk">${this.data.attack_type}</span>
-                        <span class="roles">${this.data.roles.join(' - ')}</span>
+                    <h2 class="dotadata-tooltip-title">${this.data.title}</h2>
+                    <div class="dotadata-tooltip-role">
+                        <span class="dotadata-tooltip-attack">${this.data.attack_type}</span>
+                        <span class="dotadata-tooltip-roles">${this.data.roles.join(' - ')}</span>
                     </div>
-                    <div class="stats">
-                        <span class="stat-grp">
+                    <div class="dotadata-tooltip-stats">
+                        <span class="group">
                             <img class="${this.getIconClasses('intellect')}" src="${ImageURLs.intIcon}" alt="Intelligence Icon" />
                             <span class="stat">${this.data.attribute_base_int}</span>
                         </span>
-                        <span class="stat-grp">
+                        <span class="group">
                             <img class="${this.getIconClasses('agility')}" src="${ImageURLs.agiIcon}" alt="Agility Icon" />
                             <span class="stat">${this.data.attribute_base_agi}</span>
                         </span>
-                        <span class="stat-grp">
+                        <span class="group">
                             <img class="${this.getIconClasses('strength')}" src="${ImageURLs.strIcon}" alt="Strength Icon" />
                             <span class="stat">${this.data.attribute_base_str}</span>
                         </span>
                     </div>
-                    <div class="stats">
-                        <span class="stat-grp">
-                            <img class="icon atk" src="${ImageURLs.attackIcon}" alt="Attack Icon" />
+                    <div class="dotadata-tooltip-stats">
+                        <span class="group">
+                            <img class="icon attack" src="${ImageURLs.attackIcon}" alt="Attack Icon" />
                             <span class="stat">${this.data.attack_dmg_min + '-' + this.data.attack_dmg_max}</span>
                         </span>
-                        <span class="stat-grp">
-                            <img class="icon ms" src="${ImageURLs.speedIcon}" alt="Move Speed Icon" />
+                        <span class="group">
+                            <img class="icon movespeed" src="${ImageURLs.speedIcon}" alt="Move Speed Icon" />
                             <span class="stat">${this.data.movement_speed}</span>
                         </span>
-                        <span class="stat-grp">
-                            <img class="icon arm" src="${ImageURLs.armorIcon}" alt="Armor Icon" />
+                        <span class="group">
+                            <img class="icon armor" src="${ImageURLs.armorIcon}" alt="Armor Icon" />
                             <span class="stat">${this.data.armor}</span>
                         </span>
                     </div>
-                    <div class="abilities">${abilities}</div>
                 </div>
-                <div class="ftr">
-                    <div class="bio">${this.data.bio}</div>
+                <div class="dotadata-tooltip-body">
+                    <div class="dotadata-tooltip-abilities">${abilities}</div>
+                </div>
+                <div class="dotadata-tooltip-footer">
+                    <div class="dotadata-tooltip-biography">${this.data.bio}</div>
                 </div>
             </div>
             `
@@ -456,45 +458,47 @@ module ddTips {
          * @return {HTMLElement}
          */
         buildTip(el: HTMLElement) {
-            let bodyClasses: string[] = ['container', 'ability', this.getClass()]
+            let bodyClasses: string[] = ['dotadata-tooltip-container', 'dotadata-tooltip-ability', this.getClass()]
             let cd, mc, usage: string
             if ( this.data.cd != null ) {
-                cd = `<span class="cooldown"><img class="dd-icon" src="${ImageURLs.cooldownIcon}" title="Cooldown Icon" />${this.data.cd.join(' / ')}</span>`
+                cd = `<span class="dotadata-tooltip-cooldown"><img class="icon" src="${ImageURLs.cooldownIcon}" title="Cooldown Icon" />${this.data.cd.join(' / ')}</span>`
             } else {
                 cd = ''
             }
             if ( this.data.mc != null ) {
-                mc = `<span class="mana"><img class="dd-icon" src="${ImageURLs.manaIcon}" title="Mana Cost Icon" />${this.data.mc.join(' / ')}</span>`
+                mc = `<span class="dotadata-tooltip-mana"><img class="icon" src="${ImageURLs.manaIcon}" title="Mana Cost Icon" />${this.data.mc.join(' / ')}</span>`
             } else {
                 cd = ''
             }
             if ( mc || cd ) {
-                usage = `<div class="usage">${cd}${mc}</div>`
+                usage = `<div class="dotadata-tooltip-usage">${cd}${mc}</div>`
             } else {
                 usage = ``
             }
 
             let damage: string = ''
             if ( this.data.dmg != null ) {
-                damage = `<div class="damage">${this.data.dmg}</div>`
+                damage = `<div class="dotadata-tooltip-damage">${this.data.dmg}</div>`
             }
 
             let tipContent: string = `
-            <div class="arw"></div>
+            <div class="dotadata-tooltip-arrow"></div>
             <div class="${bodyClasses.join(' ')}">
-                <div class="hdr">
-                    <span class="portrait">
-                        <img class="img" src="${this.data.img_url}" alt="${this.data.title} - Dota 2 Ability" title="${this.data.title}" />
+                <div class="dotadata-tooltip-header">
+                    <span class="dotadata-tooltip-image-container">
+                        <img class="dotadata-tooltip-image" src="${this.data.img_url}" alt="${this.data.title} - Dota 2 Ability" title="${this.data.title}" />
                     </span>
-                    <h2 class="title">${this.data.title}</h2>
-                    <div class="affects">${this.data.affects}</div>
-                    <div class="desc">${this.data.desc}</div>
+                    <h2 class="dotadata-tooltip-title">${this.data.title}</h2>
+                    <div class="dotadata-tooltip-affects">${this.data.affects}</div>
+                </div>
+                <div class="dotadata-tooltip-body">
+                    <div class="dotadata-tooltip-description">${this.data.desc}</div>
                     ${damage}
-                    <div class="attributes">${this.data.attributes}</div>
+                    <div class="dotadata-tooltip-attributes">${this.data.attributes}</div>
                     ${usage}
                 </div>
-                <div class="ftr">
-                    <div class="bio">${this.data.lore}</div>
+                <div class="dotadata-tooltip-footer">
+                    <div class="dotadata-tooltip-biography">${this.data.lore}</div>
                 </div>
             </div>
             `
@@ -539,20 +543,46 @@ module ddTips {
          * @return {HTMLElement}
          */
         buildTip(el: HTMLElement) {
-            let bodyClasses: string[] = ['container', 'item', this.getClass()]
+            let bodyClasses: string[] = ['dotadata-tooltip-container', 'dotadata-tooltip-item', this.getClass()]
             let cd, mc, usage: string
             if ( this.data.cd != null ) {
-                cd = `<span class="cooldown"><img class="dd-icon" src="${ImageURLs.cooldownIcon}" title="Cooldown Icon" />${this.data.cd.join(' / ')}</span>`
+                if ( this.data.level != null ) {
+                    let cdList: string = ''
+                    for ( let i = 1; i <= this.data.cd.length; i++ ) {
+                        let cd: number = this.data.cd[i-1]
+                        if ( this.data.level == i ) {
+                            cdList += ( this.data.mc.length == i ) ? `<span class="dotadata-tooltip-active">${cd}</span>` : `<span class="dotadata-tooltip-active">${cd}</span> / `
+                        } else {
+                            cdList += ( this.data.mc.length == i ) ? `${cd}` : `${cd} / `
+                        }
+                    }
+                    cd = `<span class="dotadata-tooltip-cooldown"><img class="icon" src="${ImageURLs.cooldownIcon}" title="Cooldown Icon" />${cdList}</span>`
+                } else {
+                    cd = `<span class="dotadata-tooltip-cooldown"><img class="icon" src="${ImageURLs.cooldownIcon}" title="Cooldown Icon" />${this.data.cd.join(' / ')}</span>`
+                }
             } else {
                 cd = ''
             }
             if ( this.data.mc != null ) {
-                mc = `<span class="mana"><img class="dd-icon" src="${ImageURLs.manaIcon}" title="Mana Cost Icon" />${this.data.mc.join(' / ')}</span>`
+                if ( this.data.level != null ) {
+                    let mcList: string = ''
+                    for ( let i = 1; i <= this.data.mc.length; i++ ) {
+                        let mc: number = this.data.mc[i-1]
+                        if ( this.data.level == i ) {
+                            mcList += ( this.data.mc.length == i ) ? `<span class="dotadata-tooltip-active">${mc}</span>` : `<span class="dotadata-tooltip-active">${mc}</span> / `
+                        } else {
+                            mcList += ( this.data.mc.length == i ) ? `${mc}` : `${mc} / `
+                        }
+                    }
+                    mc = `<span class="dotadata-tooltip-mana"><img class="icon" src="${ImageURLs.manaIcon}" title="Mana Cost Icon" />${mcList}</span>`
+                } else {
+                    mc = `<span class="dotadata-tooltip-mana"><img class="icon" src="${ImageURLs.manaIcon}" title="Mana Cost Icon" />${this.data.mc.join(' / ')}</span>`
+                }
             } else {
                 mc = ''
             }
             if ( mc || cd ) {
-                usage = `<div class="usage">${cd}${mc}</div>`
+                usage = `<div class="dotadata-tooltip-usage">${cd}${mc}</div>`
             } else {
                 usage = ``
             }
@@ -560,35 +590,44 @@ module ddTips {
             let components: string = ''
             if ( this.data.components != null && this.data.components instanceof Array ) {
                 this.data.components.forEach( component => {
-                    components += `<img class="component-icon" src="${component.img_url}" alt="${component.title} - Dota 2 Item" title="${component.title}" />`
+                    components += `<div class="dotadata-tooltip-component"><img class="icon" src="${component.img_url}" alt="${component.title} - Dota 2 Item" title="${component.title}" />${component.cost}</div>`
                 })
             }
 
             let level: string = ''
             if ( this.data.level != null) {
-                level = `<span class="lvl">${this.data.level}</span>`
+                level = `<span class="dotadata-tooltip-level">Level ${this.data.level}</span>`
             }
 
             let notes: string = ''
             if ( this.data.level != null) {
-                notes = `<div class="notes">${this.data.notes}</div>`
+                notes = `<div class="dotadata-tooltip-notes">${this.data.notes}</div>`
             }
 
             let tipContent: string = `
-            <div class="arw"></div>
+            <div class="dotadata-tooltip-arrow"></div>
             <div class="${bodyClasses.join(' ')}">
-                <div class="hdr">
-                    <span class="portrait">
-                        <img class="img" src="${this.data.img_url}" alt="${this.data.title} - Dota 2 Item" title="${this.data.title}" />
+                <div class="dotadata-tooltip-header">
+                    <span class="dotadata-tooltip-image-container">
+                        <img class="dotadata-tooltip-image" src="${this.data.img_url}" alt="${this.data.title} - Dota 2 Item" title="${this.data.title}" />
                     </span>
-                    <h2 class="title">${this.data.title}${level}</h2>
-                    <div class="meta"><img class="dd-icon" src="${ImageURLs.goldIcon}" title="Gold Icon" />${this.data.cost} ${components}</div>
-                    <div class="desc">${this.data.desc}</div>
+                    <h2 class="dotadata-tooltip-title">${this.data.title}${level}</h2>
+                    <div class="dotadata-tooltip-meta">
+                        <div class="dotadata-tooltip-cost">
+                            <img class="icon" src="${ImageURLs.goldIcon}" title="Gold Icon" />${this.data.cost}
+                        </div>
+                        <div class="dotadata-tooltip-components">
+                            ${components}
+                        </div>
+                    </div>
+                </div>
+                <div class="dotadata-tooltip-body">
+                    <div class="dotadata-tooltip-description">${this.data.desc}</div>
                     ${notes}
                     ${usage}
                 </div>
-                <div class="ftr">
-                    <div class="bio">${this.data.lore}</div>
+                <div class="dotadata-tooltip-footer">
+                    <div class="dotadata-tooltip-biography">${this.data.lore}</div>
                 </div>
             </div>
             `
@@ -633,15 +672,19 @@ module ddTips {
          * @return {HTMLElement}
          */
         buildTip(el: HTMLElement) {
-            let bodyClasses: string[] = ['container', 'theme-' + this.theme, 'unit', this.getClass()]
+            let bodyClasses: string[] = ['dotadata-tooltip-container', 'dotadata-tooltip-unit', this.getClass()]
             let tipContent: string = `
-            <div class="arw"></div>
+            <div class="dotadata-tooltip-arrow"></div>
             <div class="${bodyClasses.join(' ')}">
-                <div class="hdr">
-                    <span class="portrait">
-                        <img class="img" src="${this.data.img_url}" alt="${this.data.title} - Dota 2 Ability" />
+                <div class="dotadata-tooltip-header">
+                    <span class="dotadata-tooltip-image-container">
+                        <img class="dotadata-tooltip-image" src="${this.data.img_url}" alt="${this.data.title} - Dota 2 Ability" />
                     </span>
-                    <h2 class="title">${this.data.title}</h2>
+                    <h2 class="dotadata-tooltip-title">${this.data.title}</h2>
+                </div>
+                <div class="dotadata-tooltip-body">
+                </div>
+                <div class="dotadata-tooltip-footer">
                 </div>
             </div>
             `
