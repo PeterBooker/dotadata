@@ -54,7 +54,7 @@ module ddTips {
             link.type = 'text/css'
             link.media = 'all'
             if ( process.env.NODE_ENV === 'production' ) {
-                link.href = 'https://dota.peterbooker.com/assets/latest/ddtips.css' 
+                link.href = 'https://dota.peterbooker.com/assets/tooltips/ddtips.latest.css' 
             } else {
                 link.href = 'dev/ddtips.css'
             }
