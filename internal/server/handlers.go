@@ -104,6 +104,31 @@ func (s *Server) docs() http.HandlerFunc {
 	}
 }
 
+func (s *Server) privacy() http.HandlerFunc {
+	page := Page{
+		Name:        "privacy",
+		Title:       "Privacy - Dota 2 Data",
+		Description: "How DotaData protects your privacy.",
+		Path:        "/privacy",
+	}
+	app := App{
+		Name:    s.Config.Name,
+		Version: s.Config.Version,
+		Host:    s.Config.Host,
+	}
+
+	data := struct {
+		Page Page
+		App  App
+	}{
+		page,
+		app,
+	}
+	return func(w http.ResponseWriter, r *http.Request) {
+		render(w, "privacyPage", data)
+	}
+}
+
 func (s *Server) notFound() http.HandlerFunc {
 	page := Page{
 		Name:        "notfound",

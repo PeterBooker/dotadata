@@ -62,6 +62,7 @@ func (s *Server) routes() {
 	// Add Routes
 	s.router.Get("/", s.index())
 	s.router.Get("/docs", s.docs())
+	s.router.Get("/privacy", s.privacy())
 
 	// Need to disable RedirectSlashes middleware to enable this
 	// redirects to /debug/prof/ which causes redirect loop
