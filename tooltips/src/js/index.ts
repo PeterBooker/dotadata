@@ -89,7 +89,15 @@ module ddTips {
                     manual = true
                 }
 
-                if ( idx !== -1 || manual ) {
+                if ( manual ) {
+
+                    // Mouse Events
+                    a.addEventListener('mouseenter', mouseIn)
+                    a.addEventListener('mouseleave', mouseOut)
+                    // Touch Events
+                    //a.addEventListener('touchstart', touchStart)
+
+                } else if ( idx !== -1 ) {
 
                     let split: string[]
                     switch (SupportedDomains[idx]) {
@@ -138,8 +146,8 @@ module ddTips {
                     a.addEventListener('mouseleave', mouseOut)
                     // Touch Events
                     //a.addEventListener('touchstart', touchStart)
-
-                }   
+                    
+                }
             }
         }
     }
